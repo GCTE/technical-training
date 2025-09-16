@@ -9,7 +9,9 @@ class TestModel(models.Model):
         index=True)
     description = fields.Text()
     postcode = fields.Char()
-    date_availability = fields.Date()
+    date_availability = fields.Date(
+        copy=False,
+    )
     expected_price = fields.Float()
     selling_price = fields.Float(
         readonly=True,
