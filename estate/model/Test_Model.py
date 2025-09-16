@@ -4,9 +4,13 @@ class TestModel(models.Model):
     _name = "test.model"
     _description = "Test Model"
 
+    active = fields.Boolean(
+        default=True
+    )
     name = fields.Char(
         required=True, 
-        index=True)
+        index=True
+    )
     description = fields.Text()
     postcode = fields.Char()
     date_availability = fields.Date(
@@ -31,4 +35,5 @@ class TestModel(models.Model):
     garden_orientation = fields.Selection(
         string='GardenOrientationCustomLabel',
         selection=[('north','North'), ('south','South'), ('east' ,'East'), ('west','West')],
-        help='Is this a tooltip?')
+        help='Is this a tooltip?'
+    )
