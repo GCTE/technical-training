@@ -4,9 +4,5 @@
         <field name="name">Test action</field>
         <field name="res_model">test.model</field>
         <field name="view_mode">list,form</field>
-        <list string="Tests">
-            <field name="name"/>
-            <field name="last_seen"/>
-        </list>
     </record>
 </odoo>
