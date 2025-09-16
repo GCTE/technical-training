@@ -4,9 +4,6 @@ class TestModel(models.Model):
     _name = "test.model"
     _description = "Test Model"
 
-    active = fields.Boolean(
-        default=True
-    )
     name = fields.Char(
         required=True, 
         index=True
@@ -36,4 +33,7 @@ class TestModel(models.Model):
         string='GardenOrientationCustomLabel',
         selection=[('north','North'), ('south','South'), ('east' ,'East'), ('west','West')],
         help='Is this a tooltip?'
+    )
+    active = fields.Boolean(
+        default=True
     )
