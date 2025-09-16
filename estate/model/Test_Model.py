@@ -11,7 +11,6 @@ class TestModel(models.Model):
     description = fields.Text()
     postcode = fields.Char()
     date_availability = fields.Date(
-        copy=False,
         default=lambda self: fields.Date.add(
             fields.Date.today(), months=3
         )

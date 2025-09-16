@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
     <record id="estate_list" model="ir.ui.view">
-        <field name="name">Test action</field>
+        <field name="name">Test list</field>
         <field name="res_model">test.model</field>
         <field name="arch" type="xml">
             <list string="Test List">
