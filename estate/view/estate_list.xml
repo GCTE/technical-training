@@ -1,11 +1,47 @@
 <odoo>
-    <record id="estate_list" model="ir.actions.act_window">
+    <record id="estate_list" model="ir.ui.view">
         <field name="name">Test list</field>
         <field name="res_model">test.model</field>
-        <field name="view_mode">list</field>
-        <list string="Test List">
-            <field name="name"/>
-            <field name="last_seen"/>
-        </list>
+        <field name="arch" type="xml">
+            <form string="Property">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" class="mb16"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="postcode"/>
+                            <field name="date_availability"/>
+                        </group>
+                        <group>
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                            <group>
+                                <group>
+                                    <field name="description"/>
+                                    <field name="bedrooms"/>
+                                    <field name="garden"/>
+                                    <field name="garden_orientation"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+
+                    <!--
+                    <list string="Test List">
+                        <field name="name"/>
+                        <field name="last_seen"/>
+                    </list> 
+                    -->
+                </sheet>
+            </form>
+        </field>
     </record>
 </odoo>

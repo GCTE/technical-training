@@ -12,7 +12,7 @@ class TestModel(models.Model):
     postcode = fields.Char()
     date_availability = fields.Date(
         copy=False,
-        default=fields.Date.add(
+        default=lambda self: fields.Date.add(
             fields.Date.today(), months=3
         )
     )
