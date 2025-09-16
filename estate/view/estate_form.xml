@@ -1,6 +1,6 @@
 <odoo>
     <record id="estate_form" model="ir.ui.view">
-        <field name="name">Test form</field>
+        <field name="name">test.model.form</field>
         <field name="res_model">test.model</field>
         <field name="arch" type="xml">
             <form string="Property">
