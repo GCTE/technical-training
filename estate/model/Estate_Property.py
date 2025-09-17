@@ -28,13 +28,13 @@ class EstateProperty(models.Model):
     garage = fields.Boolean()
     garden = fields.Boolean()
     garden_area = fields.Integer()
-    garden_area_backup = fields.Integer(default = 0)
+    garden_area_restore = fields.Integer(default = 0)
     garden_orientation = fields.Selection(
         string='GardenOrientationCustomLabel',
         selection=[('north','North'), ('south','South'), ('east' ,'East'), ('west','West')],
         help='Is this a tooltip?'
     )
-    garden_orientation_backup = fields.Selection(
+    garden_orientation_restore = fields.Selection(
         selection=[('north','North'), ('south','South'), ('east' ,'East'), ('west','West')],
         help='Is this a tooltip?'
     )
@@ -90,10 +90,12 @@ class EstateProperty(models.Model):
         for property in self:
             if not property.garden:
                 #Store values from when unckecked?
-                property.garden_area_backup = property.garden_area
+                property.garden_area_restore = property.garden_area
                 property.garden_area = 0
-                property.garden_orientation_backup = property.garden_orientation
+                property.garden_orientation_restore = property.garden_orientation
                 property.garden_orientation = False
             else:
-                property.garden_area = property.garden_area_backup
-                property.garden_orientation = property.garden_orientation_backup
+                if property.garden_area_restore:
+                    property.garden_area = property.garden_area_restore
+                if property.garden_orientation_restore:
+                    property.garden_orientation = property.garden_orientation_restore
