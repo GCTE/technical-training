@@ -28,8 +28,14 @@ class EstateProperty(models.Model):
     garage = fields.Boolean()
     garden = fields.Boolean()
     garden_area = fields.Integer()
+    garden_area_backup = fields.Integer(visible=False, default = 0)
     garden_orientation = fields.Selection(
         string='GardenOrientationCustomLabel',
+        selection=[('north','North'), ('south','South'), ('east' ,'East'), ('west','West')],
+        help='Is this a tooltip?'
+    )
+    garden_orientation_backup = fields.Selection(
+        visible=False,
         selection=[('north','North'), ('south','South'), ('east' ,'East'), ('west','West')],
         help='Is this a tooltip?'
     )
@@ -79,3 +85,16 @@ class EstateProperty(models.Model):
                 property.best_price = max(property.offer_ids.mapped('price'), default=0.0)
             else:
                 property.best_price = 0.0
+
+    @api.onchange('garden')
+    def _onchange_garden(self):
+        for offer in self:
+            if not offer.garden:
+                #Store values from when unckecked?
+                offer.garden_area_backup = offer.garden_area
+                offer.garden_area = 0
+                offer.garden_orientation_backup = offer.garden_orientation
+                offer.garden_orientation = False
+            else:
+                offer.garden_area = offer.garden_area_backup
+                offer.garden_orientation = offer.garden_orientation_backup
