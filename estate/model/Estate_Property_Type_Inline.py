@@ -8,3 +8,6 @@ class EstatePropertyTypeInLine(models.Model):
         required=True,
     )
     
+    field_1 = fields.Char()
+    field_2 = fields.Char()
+    field_3 = fields.Char()
