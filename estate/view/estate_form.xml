@@ -25,7 +25,6 @@
                     </group>
                     <notebook>
                         <page string="Description">
-                            <field name="description"/>
                             <group>
                                 <group>
                                     <field name="description"/>
@@ -48,8 +47,6 @@
                                 <group>
                                     <field name="salesperson_id"/>
                                     <field name="buyer_id"/>
-                                    <field name="tag_ids"/>
-                                    <field name="property_type_id"/>
                                 </group>
                             </group>
                         </page>

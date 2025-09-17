@@ -14,3 +14,18 @@ class EstatePropertyOffer(models.Model):
     )
     property_id = fields.Many2one("estate.property", required=True)
     partner_id = fields.Many2one("res.partner", required=True)
+    validity = fields.Integer(
+        default=7
+    )
+    date_deadline = fields.Date(
+        compute="_compute_date_deadline",
+        store=True
+    )
+
+    @api.depends('validity')
+    def _compute_date_deadline(self):
+        for offer in self:
+            if offer.validity:
+                offer.date_deadline = fields.Date.add(fields.Date.today(), days=offer.validity)
+            else:
+                offer.date_deadline = False
