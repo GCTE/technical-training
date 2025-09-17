@@ -9,6 +9,7 @@ class EstatePropertyType(models.Model):
         required=True,
     )
 
+    #List all the properties of the current type
     line_ids = fields.One2many("estate.property.type.inline", "property_type_id")
     
     @api.constrains('name')
