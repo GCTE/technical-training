@@ -1,5 +1,5 @@
 from odoo import models, fields, tools, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -73,6 +73,11 @@ class EstateProperty(models.Model):
         compute="_compute_best_price"
     )
 
+    _sql_constraints = [
+        ('expected_price_positive', 'CHECK(expected_price >= 0)', 'The expected price must be positive.'),
+        ('selling_price_positive', 'CHECK(bedrooms >= 0)', 'The selling price must be positive.')
+    ]
+
     @api.depends('living_area', 'garden_area')
     def _compute_total_area(self):
         for property in self:
@@ -115,3 +120,11 @@ class EstateProperty(models.Model):
                 raise UserError("Cancelled properties cannot be sold.") 
             else:
                 property.state = 'sold'
+
+    @api.onchange('offer_ids')
+    def _onchange_offer_ids(self):
+        for property in self:
+            if property.state == 'new' and property.offer_ids:
+                property.state = 'offer_received'
+            elif property.state == 'offer_received' and not property.offer_ids:
+                property.state = 'new'

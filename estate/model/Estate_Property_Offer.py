@@ -1,4 +1,5 @@
 from odoo import models, fields, tools, api
+from odoo.exceptions import UserError
 
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
@@ -41,10 +42,11 @@ class EstatePropertyOffer(models.Model):
             else:
                 offer.validity = 0
 
-#<button name="action_accept_offer" type="object" string="ACCEPT"/>
-#<button name="action_refuse_offer" type="object" string="REFUSE"/>
     def action_accept_offer(self):
         for offer in self:
+            #is price 10% lower then asking price?
+            if offer.price < (offer.property_id.expected_price * 0.9):
+                raise UserError("The offer price must be at least 90% of the expected price.")
             offer.status = 'accepted'
             offer.property_id.state = 'offer_accepted'
             offer.property_id.selling_price = offer.price

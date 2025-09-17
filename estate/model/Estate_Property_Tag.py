@@ -1,4 +1,5 @@
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 class EstatePropertyTags(models.Model):
     _name = "estate.property.tag"
@@ -7,3 +8,10 @@ class EstatePropertyTags(models.Model):
     name = fields.Char(
         required=True
     )
+
+    @api.constrains('name')
+    def _check_unique_name(self):
+        for record in self:
+            existing = self.search([('name', '=', record.name), ('id', '!=', record.id)])
+            if existing:
+                raise UserError("The property tag name must be unique.")
