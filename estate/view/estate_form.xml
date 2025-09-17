@@ -9,7 +9,7 @@
                         <h1>
                             <field name="name" class="mb16"/>
                         </h1>
-                        <field name="property_tag_ids" widget="many2many_tags" options="{'no_create': True}" class="oe_edit_only"/>
+                        <field name="tag_ids" widget="many2many_tags" options="{'no_create': True}" class="oe_edit_only"/>
                     </div>
                     <group>
                         <group>
