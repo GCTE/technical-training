@@ -9,7 +9,7 @@ class EstatePropertyType(models.Model):
         required=True,
     )
 
-    line_ids = fields.One2many("estate.property.type.inline")
+    line_ids = fields.One2many("estate.property.type.inline", "property_type_id")
     
     @api.constrains('name')
     def _check_unique_name(self):
