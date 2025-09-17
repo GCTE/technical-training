@@ -1,7 +1,7 @@
 <odoo>
     <record id="estate_form" model="ir.ui.view">
-        <field name="name">test.model.form</field>
-        <field name="model">test.model</field>
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <form string="Property">
                 <sheet>
@@ -33,7 +33,6 @@
                             </group>
                         </page>
                         <page string="Other Info">
-                            <field name="model">estate.property.type</field>
                             <group>
                                 <group>
                                     <field name="seller_id"/>

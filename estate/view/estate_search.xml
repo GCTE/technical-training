@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
     <record id="estate_search" model="ir.ui.view">
-        <field name="name">test.model.search</field>
-        <field name="model">test.model</field>
+        <field name="name">estate.property.search</field>
+        <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <search string="Pro">
                 <field name="name" string="Title" />

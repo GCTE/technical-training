@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
     <record id="estate_list" model="ir.ui.view">
-        <field name="name">test.model.list</field>
-        <field name="model">test.model</field>
+        <field name="name">estate.property.list</field>
+        <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <list string="Test List">
                 <field name="name"/>

@@ -1,8 +1,9 @@
 from odoo import models, fields, tools, api
 
-class TestModel(models.Model):
-    _name = "test.model"
+class EstateProperty(models.Model):
+    _name = "estate.property"
     _description = "Test Model"
+
 
     name = fields.Char(
         required=True, 
@@ -50,3 +51,7 @@ class TestModel(models.Model):
         default='new'
     )
     last_seen = fields.Datetime()
+
+    buyer_id = fields.Many2one("res.partner", string="Buyer")
+    seller_id = fields.Many2one("res.users", string="Seller")
+    property_type_id = fields.Many2one("estate.property.type", string="Property Type")
