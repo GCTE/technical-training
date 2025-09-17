@@ -49,3 +49,4 @@ class TestModel(models.Model):
         copy=False,
         default='new'
     )
+    last_seen = fields.Datetime()
