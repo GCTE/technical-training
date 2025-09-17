@@ -10,7 +10,7 @@ class EstatePropertyType(models.Model):
     )
 
     #List all the properties of the current type
-    line_ids = fields.One2many("estate.property.type.inline", "property_type_id")
+    property_type_ids = fields.One2many("estate.property", "property_type_id")
     
     @api.constrains('name')
     def _check_unique_name(self):
