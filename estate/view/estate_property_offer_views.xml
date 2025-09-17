@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
-    <record id="estate_property_offer_action" model="ir.ui.view">
-        <field name="name">estate.property.offer</field>
-        <field name="res_model">estate.property</field>
+    <record id="estate_property_offer_list" model="ir.ui.view">
+        <field name="name">estate.property.offer.list</field>
+        <field name="res_model">estate.property.offer</field>
         <field name="arch" type="xml">
             <list string="Offers">
                 <field name="price"/>
