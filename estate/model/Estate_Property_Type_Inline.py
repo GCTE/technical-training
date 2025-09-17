@@ -10,6 +10,6 @@ class EstatePropertyTypeInLine(models.Model):
     
     property_type_id = fields.Many2one("estate.property.type", string="Property Type")
 
-    field_1 = fields.Char()
-    field_2 = fields.Char()
-    field_3 = fields.Char()
+    # field_1 = fields.Char()
+    # field_2 = fields.Char()
+    # field_3 = fields.Char()
