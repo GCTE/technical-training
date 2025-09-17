@@ -32,6 +32,13 @@
                                 </group>
                             </group>
                         </page>
+                        <page string="Offers">
+                            <group>
+                                <group>
+                                    <field name="offer_ids"/>
+                                </group>
+                            </group>
+                        </page>
                         <page string="Other Info">
                             <group>
                                 <group>
