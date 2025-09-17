@@ -88,13 +88,13 @@ class EstateProperty(models.Model):
 
     @api.onchange('garden')
     def _onchange_garden(self):
-        for offer in self:
-            if not offer.garden:
+        for property in self:
+            if not property.garden:
                 #Store values from when unckecked?
-                offer.garden_area_backup = offer.garden_area
-                offer.garden_area = 0
-                offer.garden_orientation_backup = offer.garden_orientation
-                offer.garden_orientation = False
+                property.garden_area_backup = property.garden_area
+                property.garden_area = 0
+                property.garden_orientation_backup = property.garden_orientation
+                property.garden_orientation = False
             else:
-                offer.garden_area = offer.garden_area_backup
-                offer.garden_orientation = offer.garden_orientation_backup
+                property.garden_area = property.garden_area_backup
+                property.garden_orientation = property.garden_orientation_backup
