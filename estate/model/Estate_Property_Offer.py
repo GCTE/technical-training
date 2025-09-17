@@ -21,7 +21,6 @@ class EstatePropertyOffer(models.Model):
     date_deadline = fields.Date(
         compute="_compute_date_deadline",
         inverse="_inverse_date_deadline",
-        search="_search_date_deadline",
         store=True,
         string="Deadline"
     )
@@ -41,11 +40,3 @@ class EstatePropertyOffer(models.Model):
                 offer.validity = (offer.date_deadline - fields.Date.today()).days
             else:
                 offer.validity = 0
-
-    def _search_date_deadline(self, operator, value):
-        if operator not in ('=', '!=', '<', '<=', '>', '>='):
-            raise ValueError("Invalid search operator for date_deadline")
-        target_date = fields.Date.to_date(value)
-        offers = self.search([])
-        matching_offers = offers.filtered(lambda o: o.date_deadline and self._compare_dates(o.date_deadline, operator, target_date))
-        return [('id', 'in', matching_offers.ids)]
