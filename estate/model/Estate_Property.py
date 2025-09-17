@@ -99,3 +99,18 @@ class EstateProperty(models.Model):
                     property.garden_area = property.garden_area_restore
                 if property.garden_orientation_restore:
                     property.garden_orientation = property.garden_orientation_restore
+
+#<button name="action_cancel_property" type="object" string="Cancel Property"/>
+    def action_cancel_property(self):
+        for property in self:
+            if property.state == 'sold':
+                raise ValueError("Sold properties cannot be cancelled.") 
+            else:
+                property.state = 'cancelled'
+    
+    def action_sold_property(self):
+        for property in self:
+            if property.state == 'cancelled':
+                raise ValueError("Cancelled properties cannot be sold.") 
+            else:
+                property.state = 'sold'
