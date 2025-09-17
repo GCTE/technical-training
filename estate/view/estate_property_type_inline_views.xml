@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="estate_property_type_inline_action" model="ir.actions.act_window">
+        <field name="name">Property Type Inline</field>
+        <field name="res_model">estate.property.type.inline</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

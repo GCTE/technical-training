@@ -8,6 +8,8 @@ class EstatePropertyType(models.Model):
     name = fields.Char(
         required=True,
     )
+
+    line_ids = fields.One2many("estate.property.type.inline")
     
     @api.constrains('name')
     def _check_unique_name(self):

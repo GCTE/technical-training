@@ -9,6 +9,10 @@ class EstatePropertyTags(models.Model):
         required=True
     )
 
+    # _sql_constraints = [
+    #     ('unique_name', 'UNIQUE(name)', 'The property tag name must be unique.')
+    # ]
+    ## ||
     @api.constrains('name')
     def _check_unique_name(self):
         for record in self:
