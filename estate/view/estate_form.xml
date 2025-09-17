@@ -32,6 +32,15 @@
                                 </group>
                             </group>
                         </page>
+                        <page string="Other Info">
+                            <field name="model">estate.property.type</field>
+                            <group>
+                                <group>
+                                    <field name="seller_id"/>
+                                    <field name="buyer_id"/>
+                                </group>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
