@@ -12,9 +12,10 @@
     'data': [
         'security/ir.model.access.csv',
         'view/estate_property_views.xml',
-        'view/estate_menus.xml',
+        'view/estate_property_type_views.xml',
         'view/estate_form.xml',
         'view/estate_list.xml',
         'view/estate_search.xml',
+        'view/estate_menus.xml',
     ],
 }
