@@ -1,8 +1,8 @@
 from odoo import models, fields
 
-class PropertyType(models.Model):
+class EstatePropertyType(models.Model):
     _name = "estate.property.type"
-    _description = "Property Type"
+    _description = "Estate Property Type"
 
     name = fields.Char(
         required=True,
