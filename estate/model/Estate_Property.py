@@ -52,6 +52,8 @@ class EstateProperty(models.Model):
     )
     last_seen = fields.Datetime()
 
-    buyer_id = fields.Many2one("res.partner", string="Buyer")
-    seller_id = fields.Many2one("res.users", string="Seller")
-    property_type_id = fields.Many2one("estate.property.type", string="Property Type")
+    property_type_id = fields.Many2one("estate.property.type")
+    salesperson_id = fields.Many2one("res.users", default=lambda self: self.env.user)
+    buyer_id = fields.Many2one("res.partner", copy=False)
+    tag_ids = fields.Many2many("estate.property.tag")
+    offer_ids = fields.One2many("estate.property.offer", "property_id")
